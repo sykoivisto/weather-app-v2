@@ -7,9 +7,25 @@
     <title>Weather Now</title>
   </head>
   <body>
+    <div id="loadingContainer">
+      <div class="lds-ring"></div>
+    </div>
     <form id="weatherForm">
       <input type="text" placeholder="Enter a City" id="city" />
+      <button type="button" id="location">Phoenix</button>
       <button data-units="F" type="button" id="units">F</button>
     </form>
+
+
+    <p id="conditions">Sunny</p>
+    <p id="temp">71&deg</p>
+
+    <p>Feels Like</p>
+    <p id="feelsLike"></p>
+    <p>Wind</p>
+    <p id="wind"></p>
+    <p>Humidity</p>
+    <p id="humidity"></p>
+
   </body>
 </html>

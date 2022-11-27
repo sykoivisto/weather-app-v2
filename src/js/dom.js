@@ -31,9 +31,38 @@ const domManager = () => {
 
   // this function is responsible for rendering the weather information.
   const updateWeatherData = async (city, units) => {
-    const weatherData = await getWeather(city, units);
+    // add a loading circle
+    const loadingContainer = document.getElementById('loadingContainer');
+    loadingContainer.innerHTML = '<div class="lds-ring"><div></div><div></div><div></div><div></div></div>';
 
-    console.log(weatherData);
+    const weatherData = await getWeather(city, units);
+    // weatherData = {conditions, feelsLike, humidity, location, temp, units, wind}
+
+    // remove the loading circle
+    loadingContainer.innerHTML = '';
+    
+    // if we get an error, display a message
+    if (weatherData.error) {
+      alert(weatherData.error);
+      return;
+    };
+
+    // get all of our dom elements
+    const domConditions = document.getElementById('conditions');
+    const domFeelsLike = document.getElementById('feelsLike');
+    const domHumidity = document.getElementById('humidity');
+    const domLocation = document.getElementById('location');
+    const domTemp = document.getElementById('temp');
+    const domWind = document.getElementById('wind');
+
+    // set all of our content
+    domConditions.innerText = weatherData.conditions;
+    domFeelsLike.innerText = weatherData.feelsLike;
+    domHumidity.innerText = weatherData.humidity;
+    domLocation.innerText = weatherData.location;
+    domTemp.innerText = weatherData.temp;
+    domWind.innerText = weatherData.wind;
+
   };
 
   const onClickUpdateWeatherData = (event) => {

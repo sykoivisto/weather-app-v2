@@ -39,7 +39,13 @@ const getWeather = async (city, units) => {
     `${units.toUpperCase() === "C" ? "metric" : "imperial"}`
   ); // check if units are metric. default to imperial if any other input is received.
 
-  const processedData = processWeatherData(weatherData.data, weatherData.units);
+  let processedData;
+
+  if (weatherData.data.cod !== 200) {
+    processedData = {error: 'City not found'};
+  } else {
+    processedData = processWeatherData(weatherData.data, weatherData.units);
+  };
 
   return processedData;
 };
