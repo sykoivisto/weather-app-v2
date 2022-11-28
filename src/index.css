@@ -168,6 +168,9 @@ form {
   justify-content: end;
   gap: 10px;
 }
+.forecast-container {
+  padding: 0 10px;
+}
 #forecast {
   background-color: #0f172a;
   max-width: 500px;
@@ -180,6 +183,9 @@ form {
   color: white;
   display: flex;
   justify-content: space-between;
+}
+img {
+  width: 180px;
 }
 #conditions {
   font-size: 16px;
@@ -194,8 +200,6 @@ form {
   border-radius: 10px;
   padding: 10px;
   font-size: 10px;
-
-
 }
 .card-title {
   text-align: center;

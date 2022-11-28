@@ -12,36 +12,39 @@
     </div>
     <form id="weatherForm">
       <input type="text" placeholder="Enter a City" id="city" />
-      <button type="button"><label for="city" data-city="phoenix" id="location">Phoenix</label></button>
+      <button type="button">
+        <label for="city" data-city="" id="location">n/a</label>
+      </button>
       <button data-units="F" type="button" id="units">F</button>
     </form>
 
-    <div id="forecast">
-      <div class="main">
-        <div class="icon">
-
+    <div class="forecast-container">
+      <div id="forecast">
+        <div class="main">
+          <div class="icon">
+            <img id="icon" src="" alt="" />
+          </div>
+          <div class="text">
+            <p><span id="conditions">n/a</span></p>
+            <p id="temp-container"><span id="temp">n/a</span>&deg</p>
+          </div>
         </div>
-        <div class="text">
-          <p><span id="conditions">n/a</span></p>
-          <p id="temp-container"><span id="temp">n/a</span>&deg</p>
+
+        <div class="cards">
+          <div class="card">
+            <p class="card-title">Feels Like</p>
+            <p class="card-data"><span id="feelsLike">n/a</span>&deg</p>
+          </div>
+          <div class="card">
+            <p class="card-title">Wind</p>
+            <p class="card-data" id="wind">n/a</p>
+          </div>
+          <div class="card">
+            <p class="card-title">Humidity</p>
+            <p class="card-data"><span id="humidity">n/a</span>%</p>
+          </div>
         </div>
       </div>
-
-      <div class="cards">
-        <div class="card">
-          <p class="card-title">Feels Like</p>
-          <p class="card-data"><span id="feelsLike">n/a</span>&deg</p>
-        </div>
-        <div class="card">
-          <p class="card-title">Wind</p>
-          <p class="card-data" id="wind">n/a</p>
-        </div>
-        <div class="card">
-          <p class="card-title">Humidity</p>
-          <p class="card-data"><span id="humidity">n/a</span>%</p>
-        </div>
-      </div>
-
     </div>
   </body>
 </html>

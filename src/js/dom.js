@@ -1,5 +1,13 @@
 import getWeather from "./weatherData";
 
+function importAll(r) {
+  const images = {};
+  r.keys().map((item) => { images[item.replace('./', '')] = r(item); });
+  return images;
+}
+
+const images = importAll(require.context('../svg', false, /\.(png|jpe?g|svg)$/));
+
 const domManager = () => {
 
   // make our toggle button work (switch between metric and imperial units)
@@ -42,6 +50,7 @@ const domManager = () => {
     const domLocation = document.getElementById('location');
     const domTemp = document.getElementById('temp');
     const domWind = document.getElementById('wind');
+    const domIcon = document.getElementById('icon');
 
     // set all of our content
     domConditions.innerText = weatherData.conditions;
@@ -52,6 +61,8 @@ const domManager = () => {
     domTemp.innerText = weatherData.temp;
     domWind.innerText = weatherData.wind;
 
+    const iconSrc = `${weatherData.icon}.svg`
+    domIcon.src = images[iconSrc]
   };
 
   // add event listeners to the form and the units button.
@@ -83,6 +94,8 @@ const domManager = () => {
 
     updateWeatherData(cityVal, unitsVal);
   });
+
+  updateWeatherData('Phoenix', 'F');
 };
 
 export default domManager;
