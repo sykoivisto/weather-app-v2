@@ -1,5 +1,7 @@
 # Weather App v2
 
+## [Live Demo](https://sykoivisto.github.io/weather-app-v2/)
+
 ## Description
 
 I build this app to practice using asynchronous functions, es6 modules, imports, webpack, and more. This was a good exercise in getting a few async functions to work together correctly, and dynamically displaying content to the DOM; while keeping the code clean and bundling everything nicely.
