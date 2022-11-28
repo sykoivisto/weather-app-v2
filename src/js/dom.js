@@ -1,18 +1,6 @@
 import getWeather from "./weatherData";
 
 const domManager = () => {
-  // retreive the values of our inputs from the dom
-  const getInput = () => {
-    const cityInput = document.getElementById("city");
-    const cityVal = cityInput.value;
-    const unitsInput = document.getElementById("units");
-    const unitsVal = unitsInput.dataset.units;
-
-    return {
-      cityVal,
-      unitsVal,
-    };
-  };
 
   // make our toggle button work (switch between metric and imperial units)
   const onClickChangeUnits = () => {
@@ -60,16 +48,10 @@ const domManager = () => {
     domFeelsLike.innerText = weatherData.feelsLike;
     domHumidity.innerText = weatherData.humidity;
     domLocation.innerText = weatherData.location;
+    domLocation.dataset.city = weatherData.location;
     domTemp.innerText = weatherData.temp;
     domWind.innerText = weatherData.wind;
 
-  };
-
-  const onClickUpdateWeatherData = (event) => {
-    event.preventDefault();
-    const values = getInput();
-
-    updateWeatherData(values.cityVal, values.unitsVal);
   };
 
   // add event listeners to the form and the units button.
@@ -77,11 +59,29 @@ const domManager = () => {
   const unitsButton = document.getElementById("units");
 
   weatherForm.addEventListener("submit", (event) => {
-    onClickUpdateWeatherData(event);
+    event.preventDefault();
+
+    const cityInput = document.getElementById("city");
+    const cityVal = cityInput.value;
+    const unitsInput = document.getElementById("units");
+    const unitsVal = unitsInput.dataset.units;
+
+    const form = document.getElementById('weatherForm');
+
+    updateWeatherData(cityVal, unitsVal);
+
+    form.reset();
   });
   unitsButton.addEventListener("click", (event) => {
     onClickChangeUnits();
-    onClickUpdateWeatherData(event);
+    event.preventDefault();
+
+    const cityInput = document.getElementById("location");
+    const cityVal = cityInput.dataset.city;
+    const unitsInput = document.getElementById("units");
+    const unitsVal = unitsInput.dataset.units;
+
+    updateWeatherData(cityVal, unitsVal);
   });
 };
 

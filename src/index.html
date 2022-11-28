@@ -12,20 +12,36 @@
     </div>
     <form id="weatherForm">
       <input type="text" placeholder="Enter a City" id="city" />
-      <button type="button"><label for="city" id="location">Phoenix</label></button>
+      <button type="button"><label for="city" data-city="phoenix" id="location">Phoenix</label></button>
       <button data-units="F" type="button" id="units">F</button>
     </form>
 
+    <div id="forecast">
+      <div class="main">
+        <div class="icon">
 
-    <p id="conditions">Sunny</p>
-    <p id="temp">71&deg</p>
+        </div>
+        <div class="text">
+          <p><span id="conditions">n/a</span></p>
+          <p id="temp-container"><span id="temp">n/a</span>&deg</p>
+        </div>
+      </div>
 
-    <p>Feels Like</p>
-    <p id="feelsLike"></p>
-    <p>Wind</p>
-    <p id="wind"></p>
-    <p>Humidity</p>
-    <p id="humidity"></p>
+      <div class="cards">
+        <div class="card">
+          <p class="card-title">Feels Like</p>
+          <p class="card-data"><span id="feelsLike">n/a</span>&deg</p>
+        </div>
+        <div class="card">
+          <p class="card-title">Wind</p>
+          <p class="card-data" id="wind">n/a</p>
+        </div>
+        <div class="card">
+          <p class="card-title">Humidity</p>
+          <p class="card-data"><span id="humidity">n/a</span>%</p>
+        </div>
+      </div>
 
+    </div>
   </body>
 </html>

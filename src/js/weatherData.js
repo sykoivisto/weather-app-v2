@@ -13,12 +13,20 @@ const fetchWeatherData = async (city, units) => {
 
 // give the weather data, and return just the info we want.
 const processWeatherData = (weatherData, units) => {
+
+  let speed = '';
+  if (units === 'metric') {
+    speed = 'km/h';
+  } else {
+    speed = 'mph';
+  }
+
   const location = weatherData.name;
   const conditions = weatherData.weather[0].description;
-  const { temp } = weatherData.main;
-  const feelsLike = weatherData.main.feels_like;
+  const temp = Math.round(weatherData.main.temp);
+  const feelsLike = Math.round(weatherData.main.feels_like);
   const { humidity } = weatherData.main;
-  const wind = weatherData.wind.speed;
+  const wind = `${Math.round(weatherData.wind.speed)} ${speed}`;
 
   return {
     location,
@@ -26,8 +34,7 @@ const processWeatherData = (weatherData, units) => {
     temp,
     feelsLike,
     humidity,
-    wind,
-    units,
+    wind
   };
 };
 
@@ -42,10 +49,10 @@ const getWeather = async (city, units) => {
   let processedData;
 
   if (weatherData.data.cod !== 200) {
-    processedData = {error: 'City not found'};
+    processedData = { error: "City not found" };
   } else {
     processedData = processWeatherData(weatherData.data, weatherData.units);
-  };
+  }
 
   return processedData;
 };
